@@ -1,0 +1,21 @@
+<% include ../layouts/adminHeader %>
+<div class="container">
+    <h2 class="mt-5 mb-3">Create New Category</h2>
+    <form>
+        <div class="form-group">
+            <label for="categoryName">Category Name</label>
+            <input type="text" class="form-control" id="categoryName" placeholder="Enter Category Name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Status</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>Active</option>
+                <option>Unactive</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary mb-2">Create Category</button>
+        </div>
+    </form>
+</div>
+<% include ../layouts/footer %>

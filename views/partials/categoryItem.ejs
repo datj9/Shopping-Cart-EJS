@@ -1,0 +1,11 @@
+<tr>
+    <th scope="row"><%= index + 1 %></th>
+    <td><%= category.name %></td>
+    <td><%= category.status %></td>
+    <td>
+        <form class="d-inline-block" action=<%= `/admin/categories/delete/${category._id}` %> method="post">
+            <button value="123" onClick="this.form.submit()" type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <button name="" class="btn btn-secondary">Modify</button>
+    </td>
+</tr>
