@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const CategorySchema = new mongoose.Schema({
     name: {
@@ -9,16 +9,8 @@ const CategorySchema = new mongoose.Schema({
     status: {
         type: String,
         required: true
-    }
-})
-
-CategorySchema.method("transform", function () {
-    let obj = this.toObject();
-
-    obj.id = obj._id;
-    delete obj._id;
-
-    return obj;
+    },
+    products: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Product" }]
 });
 
-module.exports = new mongoose.model('Category', CategorySchema, 'Categories')
+module.exports = new mongoose.model("Category", CategorySchema, "Categories");
