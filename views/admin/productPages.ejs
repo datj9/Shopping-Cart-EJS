@@ -53,9 +53,32 @@
             </div>
             <% } %>
             <h3 class="list-title d-inline-block float-left">Product List</h3>
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal">
+            <button type="button" class="btn btn-primary float-right  ml-3" data-toggle="modal" data-target="#createModal">
                 Create New Product
             </button>
+            <div class="dropdown float-right ml-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Filter by
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <% categories.forEach(category => { %>
+                      <a class="dropdown-item" href="?filterBy=<%= category.name %>"> <%= category.name%></a>
+                  <%}) %> 
+                </div>
+            </div>
+            <div class="dropdown float-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sort by
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="?sortBy=name&orderBy=1">Name A - Z</a>
+                  <a class="dropdown-item" href="?sortBy=name&orderBy=-1">Name Z - A</a>
+                  <a class="dropdown-item" href="?sortBy=price&orderBy=1">Price ascending</a>
+                  <a class="dropdown-item" href="?sortBy=price&orderBy=-1">Price descending</a>
+                  <a class="dropdown-item" href="?sortBy=quantity&orderBy=1">Quantity ascending</a>
+                  <a class="dropdown-item" href="?sortBy=quantity&orderBy=-1">Quantity descending</a>
+                </div>
+            </div>
         </div>
         <% if(products.length) { %>
         <table class="table table-striped mt-3">

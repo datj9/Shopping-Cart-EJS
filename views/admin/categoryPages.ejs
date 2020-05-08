@@ -44,10 +44,20 @@
                 <%= errors.name %>
             </div> 
            <% } %>
+           
             <h3 class="list-title d-inline-block float-left">Category List</h3>
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal">
+            <button type="button" class="btn btn-primary float-right ml-3" data-toggle="modal" data-target="#createModal">
                 Create New Category
             </button>
+            <div class="dropdown float-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sort By
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="?sortBy=name&orderBy=1">Name A - Z</a>
+                  <a class="dropdown-item" href="?sortBy=name&orderBy=-1">Name Z - A</a>
+                </div>
+            </div>
         </div>
         <% if(categories.length) { %>
             <table class="table table-striped mt-3">

@@ -4,7 +4,19 @@ const Category = require("../models/Category");
 const errors = {};
 
 module.exports.getProducts = async function (req, res) {
-    const products = await Product.find().populate("category");
+    const { sortBy, orderBy, filterBy } = req.query;
+    const category = await Category.findOne({ name: filterBy });
+    let products;
+    if (filterBy) {
+        products = await Product.find({ category: { $eq: category.id } })
+            .sort({ [sortBy]: parseInt(orderBy) })
+            .populate("category");
+    } else {
+        products = await Product.find()
+            .populate("category")
+            .sort({ [sortBy]: parseInt(orderBy) });
+    }
+
     const categories = await Category.find();
     const errors = {};
     res.render("admin/productPages", { products, categories, errors });

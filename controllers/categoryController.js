@@ -1,7 +1,8 @@
 const Category = require("../models/Category");
 
 module.exports.getCategories = async function (req, res) {
-    const categories = await Category.find();
+    const { sortBy, orderBy } = req.query;
+    const categories = await Category.find().sort({ [sortBy]: parseInt(orderBy) });
     const errors = {};
     res.render("admin/categoryPages", { categories, errors });
 };
